@@ -29,17 +29,21 @@ El nombre del archivo de la API **debe llamarse `main.py`** para que Render lo d
 
 Para desplegar la API en **Render**, sigue estos pasos:
 
-1️⃣ **Inicia sesión en [Render](https://render.com/)** utilizando tu cuenta de **GitHub**.
-2️⃣ **Crea un nuevo servicio web**.
-3️⃣ **Conecta el repositorio de GitHub donde tienes este proyecto**.
-4️⃣ **Configura el Start Command** con:
+1️⃣ **Inicia sesión en [Render](https://render.com/)** utilizando tu cuenta de **GitHub**.  
+
+2️⃣ **Crea un nuevo servicio web**.  
+
+3️⃣ **Conecta el repositorio de GitHub donde tienes este proyecto**.  
+
+4️⃣ **Configura el Start Command** con:  
 
 ```bash
 uvicorn main:app --host 0.0.0.0 --port 8080
 ```
 
-5️⃣ **Selecciona Python 3.9+ como versión del runtime.**
-6️⃣ **Haz clic en Deploy** y Render generará la URL de tu API.
+5️⃣ **Selecciona Python 3.9+ como versión del runtime.**  
+
+6️⃣ **Haz clic en Deploy** y Render generará la URL de tu API.  
 
 ---
 
@@ -47,25 +51,11 @@ uvicorn main:app --host 0.0.0.0 --port 8080
 
 Una vez desplegado en Render, puedes probar la API con los siguientes endpoints:
 
-🔹 **Ver gráfico de clusters y vecinos cercanos:**  
-```
-GET https://model-knn.onrender.com/knn_plot?x_query=5.0
-```
+🔹 **[Ver gráfico de clusters y vecinos cercanos](https://model-knn.onrender.com/knn_plot?x_query=5.0)**
 
-🔹 **Realizar una predicción con KNN:**  
-```
-GET https://model-knn.onrender.com/knn_predict?x=5.0
-```
+🔹 **[Realizar una predicción con KNN](https://model-knn.onrender.com/knn_predict?x=5.0)**
 
-🔹 **Obtener métricas del modelo KNN:**  
-```
-GET https://model-knn.onrender.com/knn_metrics
-```
-
-🔹 **Determinar cuántos clusters hay en los datos:**  
-```
-GET https://model-knn.onrender.com/knn_clusters
-```
+🔹 **[Obtener métricas del modelo KNN](https://model-knn.onrender.com/knn_metrics)**
 
 ---
 
@@ -82,8 +72,10 @@ GET https://model-knn.onrender.com/knn_clusters
 ---
 
 ## 🎯 Autor
-📌 **Rodrigo Alberto Lara Cáceres**  
-🔗 **[LinkedIn](https://www.linkedin.com/in/rodrigo-lara-caceres/)**  
-📧 **rodlarca@gmail.com**  
+
+📌 **Rodrigo Alberto Lara Cáceres**\
+🔗 **[LinkedIn](https://www.linkedin.com/in/rodrigo-lara-caceres/)**\
+📧 **[rodlarca@gmail.com](mailto:rodlarca@gmail.com)**
 
 🚀 **¡Listo para hacer predicciones con KNN en la nube!** 🎯🔥
+
