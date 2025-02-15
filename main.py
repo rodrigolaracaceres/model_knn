@@ -20,13 +20,25 @@ def read_root():
     return {"message": "API con modelo KNN"}
 
 @app.get("/knn_plot")
-def plot_knn():
-    """Genera y devuelve un gráfico de dispersión de los datos"""
+def plot_knn(x_query: float = 5.0):
+    """Genera y devuelve un gráfico mostrando los 5 vecinos más cercanos"""
+    # Escalar el dato de entrada
+    x_scaled = scaler.transform(np.array([[x_query]]))
+    
+    # Obtener los 5 vecinos más cercanos
+    distances, indices = knn_model.kneighbors(x_scaled)
+    nearest_X = X_train_knn[indices[0]]
+    nearest_y = y_train_knn[indices[0]]
+
+    # Crear gráfico de dispersión
     plt.figure(figsize=(6, 4))
     plt.scatter(X_train_knn, y_train_knn, label="Datos reales", alpha=0.6, color="blue")
+    plt.scatter(nearest_X, nearest_y, color="red", label="Vecinos más cercanos", marker="o", s=100)
+    plt.scatter(x_query, knn_model.predict(x_scaled), color="green", marker="X", s=150, label="Predicción")
+    
     plt.xlabel("X")
     plt.ylabel("Valor Predicho")
-    plt.title("Distribución de Datos - Modelo KNN")
+    plt.title(f"Distribución de Datos - KNN (X={x_query})")
     plt.legend()
     plt.grid()
 
@@ -39,10 +51,21 @@ def plot_knn():
 
 @app.get("/knn_predict")
 def knn_predict(x: float):
-    """Realiza una predicción con el modelo KNN"""
+    """Realiza una predicción y asigna un cluster basado en los 5 vecinos más cercanos"""
     x_scaled = scaler.transform(np.array([[x]]))  # Escalar el dato de entrada
     prediction = knn_model.predict(x_scaled)
-    return {"prediction": float(prediction[0][0])}
+
+    # Obtener los 5 vecinos más cercanos
+    distances, indices = knn_model.kneighbors(x_scaled)
+    nearest_y = y_train_knn[indices[0]]
+
+    # Crear cluster basado en la media de los 5 vecinos
+    cluster = round(np.mean(nearest_y))  # Aproximar a un cluster
+
+    return {
+        "prediction": float(prediction[0][0]),
+        "assigned_cluster": cluster
+    }
 
 @app.get("/knn_metrics")
 def knn_metrics():
