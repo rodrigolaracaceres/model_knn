@@ -1,31 +1,89 @@
-# KNN model
+# 📌 KNN Model
 
-## Crear un archivo requirements.txt con las librerías necesarias para la api
+Este proyecto implementa un modelo **K-Nearest Neighbors (KNN) Regresor** utilizando **FastAPI** y lo despliega en **Render**.
 
-## El nombre del archivo de la api debe llamarse "main.py" para que render lo tome automaticamente
+## 🔹 Crear un archivo `requirements.txt`
 
-## Iniciar sesión en render con el login de github
+Para asegurar que la API funcione correctamente, crea un archivo `requirements.txt` con las siguientes dependencias:
 
-## En render declarar como start command:
+```bash
+fastapi
+uvicorn
+numpy
+joblib
+scikit-learn
+matplotlib
+```
+
+Esto garantizará que la API tenga las librerías necesarias para ejecutarse en Render.
+
+---
+
+## 🔹 Nombre del archivo principal
+
+El nombre del archivo de la API **debe llamarse `main.py`** para que Render lo detecte automáticamente.
+
+---
+
+## 🔹 Iniciar sesión en Render
+
+Para desplegar la API en **Render**, sigue estos pasos:
+
+1️⃣ **Inicia sesión en [Render](https://render.com/)** utilizando tu cuenta de **GitHub**.
+2️⃣ **Crea un nuevo servicio web**.
+3️⃣ **Conecta el repositorio de GitHub donde tienes este proyecto**.
+4️⃣ **Configura el Start Command** con:
+
+```bash
 uvicorn main:app --host 0.0.0.0 --port 8080
+```
 
-## Pruebas
-https://https:/model-knn.onrender.com/knn_plot?x_query=5.0
+5️⃣ **Selecciona Python 3.9+ como versión del runtime.**
+6️⃣ **Haz clic en Deploy** y Render generará la URL de tu API.
 
-https://https://model-knn.onrender.com/knn_predict?x=5.0
+---
 
-https://https://model-knn.onrender.com/knn_metrics
+## 🔹 Pruebas de la API
 
-https://https://model-knn.onrender.com/knn_clusters
+Una vez desplegado en Render, puedes probar la API con los siguientes endpoints:
 
-## Estructura
+🔹 **Ver gráfico de clusters y vecinos cercanos:**  
+```
+GET https://model-knn.onrender.com/knn_plot?x_query=5.0
+```
+
+🔹 **Realizar una predicción con KNN:**  
+```
+GET https://model-knn.onrender.com/knn_predict?x=5.0
+```
+
+🔹 **Obtener métricas del modelo KNN:**  
+```
+GET https://model-knn.onrender.com/knn_metrics
+```
+
+🔹 **Determinar cuántos clusters hay en los datos:**  
+```
+GET https://model-knn.onrender.com/knn_clusters
+```
+
+---
+
+## 🔹 Estructura del Proyecto
+
+```
 /tu-repo
 │── main.py               # Código de la API FastAPI
 │── train_knn.py          # Entrena y guarda el modelo KNN
 │── requirements.txt      # Dependencias del proyecto
 │── README.md             # Documentación del proyecto
+```
 
-🎯 Autor
-📌 Rodrigo Alberto Lara Cáceres
-🔗 [LinkedIn](https://www.linkedin.com/in/rodrigo-lara-caceres/)
-📧 rodlarca@gmail.com
+---
+
+## 🎯 Autor
+📌 **Rodrigo Alberto Lara Cáceres**  
+🔗 **[LinkedIn](https://www.linkedin.com/in/rodrigo-lara-caceres/)**  
+📧 **rodlarca@gmail.com**  
+
+🚀 **¡Listo para hacer predicciones con KNN en la nube!** 🎯🔥
